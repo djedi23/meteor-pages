@@ -24,6 +24,7 @@
     routerTemplate: [true, String, "pages"]
     routerLayout: [true, Match.Optional(String), undefined]
     sort: [true, Object, {}]
+    subsManager: [true, Match.Any, {}]
     
     # Unavailable to the client after initialization
     
@@ -958,7 +959,7 @@
       @enforceSubscriptionLimit()
       Meteor.defer _.bind ((page) ->
         #@log "subscribing to page #{page}"
-        @subscriptions[page] = Meteor.subscribe @id, page,
+        @subscriptions[page] = @subsManager.subscribe @id, page,
           onReady: _.bind (page) ->
             @onPage page
           , @, page

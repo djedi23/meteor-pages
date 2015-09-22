@@ -17,6 +17,7 @@ Package.onUse(function(api){
         "ejson"
     ]);
     api.use("iron:router@1.0.0", ["client", "server"], { weak: true });
+    api.use("meteorhacks:subs-manager", ["client", "server"], { weak: true });
 
     api.use([
         "templating",
